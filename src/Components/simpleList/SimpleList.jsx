@@ -43,6 +43,7 @@ export default function SimpleList({ chats, setChats, chatId }) {
 
   const addChat = useCallback(() => {
     dispatch(addChatAction);
+    console.log(dispatch(addChatAction));
   }, [dispatch]);
 
   const deleteChat = (id) => {

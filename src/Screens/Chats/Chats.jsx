@@ -1,10 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import {
-  BrowserRouter,
-  Route,
-  Switch,
-  useRouteMatch,
-} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import "./Chats.css";
 import SimpleList from "../../Components/simpleList/SimpleList";
 import { Chat } from "../../Components/chat";
@@ -15,7 +10,6 @@ const initialChats = {};
 
 export const Chats = () => {
   const [chats, setChats] = useState(initialChats);
-  const path = useRouteMatch();
 
   const [messageList, setMessageList] = useState([]);
   const handleChangeMessageList = useCallback(
@@ -56,12 +50,6 @@ export const Chats = () => {
           <Chat messageList={messageList} />
           <Form handleChangeMessageList={handleChangeMessageList} />
         </div>
-
-        <Switch>
-          <Route exact path={path}>
-            <h3>Please select a chat.</h3>
-          </Route>
-        </Switch>
       </div>
     </BrowserRouter>
   );
