@@ -1,0 +1,58 @@
+.App {
+  text-align: center;
+}
+.App-header {
+  min-height: 100vh;
+  min-width: 100vh;
+  display: flex;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  flex-direction: column;
+}
+
+.App-div {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 100%;
+  align-items: center;
+}
+
+.chatAuthor {
+  color: black;
+  font-size: 14px;
+  background-color: rgb(200, 200, 200);
+}
+
+.chatText {
+  color: black;
+  font-size: 18px;
+}
+
+.chatId {
+  color: black;
+  font-size: 14px;
+  background-color: rgb(200, 200, 200);
+}
+
+.Chat {
+  background-color: beige;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  margin-top: 0px;
+  width: 100%;
+}
+
+.makeStyles-root-1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.MuiTabs-flexContainer {
+  justify-content: center;
+}

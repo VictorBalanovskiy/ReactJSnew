@@ -1,0 +1,30 @@
+.Chat {
+  display: flex;
+}
+
+.MuiButton-startIcon {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.MuiButton-root {
+  padding: 6px;
+  min-width: auto;
+}
+
+.MuiButton-containedSecondary {
+  margin-left: 215px !important;
+}
+
+.MuiListItem-root a {
+  text-decoration: none;
+  background-color: beige;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  box-sizing: border-box;
+}
+
+.MuiListItem-root a:hover {
+  background-color: rgb(233, 233, 107);
+}
