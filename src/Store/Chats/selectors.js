@@ -1,1 +1,1 @@
-export const chatsListSelector = (state) => state.chatsList;
+export const chatListSelector = (state) => state.chats.chatsList;

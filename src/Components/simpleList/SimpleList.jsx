@@ -12,8 +12,9 @@ import "./simpleList.css";
 import { ROUTES } from "../../constants";
 // import { getId } from "../../utils";
 // import { getCounter } from "../../utils";
-import { useDispatch } from "react-redux";
-import { addChatAction } from "../../Store/Chats/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { addChatAction, deleteChatAction } from "../../Store/Chats/actions";
+import { chatListSelector } from "../../Store/Chats/selectors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,8 +26,10 @@ const useStyles = makeStyles((theme) => ({
 
 // const counter = getCounter();
 
-export default function SimpleList({ chats, setChats, chatId }) {
+export default function SimpleList({ chatId }) {
   const classes = useStyles();
+
+  const chats = useSelector(chatListSelector);
 
   const dispatch = useDispatch();
 
@@ -42,16 +45,23 @@ export default function SimpleList({ chats, setChats, chatId }) {
   // };
 
   const addChat = useCallback(() => {
-    dispatch(addChatAction);
-  }, [dispatch]);
+    dispatch(addChatAction(), [dispatch]);
+  }, [chats]);
 
-  const deleteChat = (id) => {
-    setChats((prevChats) => {
-      const newChats = { ...prevChats };
-      delete newChats[id];
-      return newChats;
-    });
-  };
+  const deleteChat = useCallback(
+    (id) => {
+      dispatch(deleteChatAction({ id }), [dispatch, id]);
+    },
+    [chats]
+  );
+
+  // const deleteChat = (id) => {
+  //   setChats((prevChats) => {
+  //     const newChats = { ...prevChats };
+  //     delete newChats[id];
+  //     return newChats;
+  //   });
+  // };
 
   return (
     <BrowserRouter>
@@ -67,19 +77,19 @@ export default function SimpleList({ chats, setChats, chatId }) {
           >
             CREATE CHAT
           </Button>
-          {Object.keys(chats).map((id) => {
+          {chats.map((chat) => {
             return (
-              <React.Fragment key={id}>
+              <React.Fragment key={chat.id}>
                 <ListItem>
-                  <Link to={`/chats/${id}`}>
-                    <ListItemText primary={chats[id].name} />
+                  <Link to={`/chats/${chat.id}`}>
+                    <ListItemText primary={chat.name} />
                   </Link>
                   <Button
                     variant="contained"
                     color="secondary"
                     className={classes.button}
                     startIcon={<DeleteIcon />}
-                    onClick={() => deleteChat(id)}
+                    onClick={() => deleteChat(chat.id)}
                   ></Button>
                 </ListItem>
               </React.Fragment>
